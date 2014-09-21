@@ -785,8 +785,12 @@ if ( cfg.set_system_time_from_ntp_server_at_startup ):
 # Send mail with IP information ( using a thread to avoid strange freezing )
 if ( publicIP != None and cfg.use_mail and cfg.mail_ip ):
 	log("Local IP :" + IP + " Public IP : " + publicIP)
-	thread.start_new_thread(SendMail,(cfg, cfg.station_name + " - My IP has changed","Local IP :" + IP + " Public IP : " + publicIP,"")) 
-	
+	thread.start_new_thread(SendMail,(cfg, cfg.station_name + " Report Swpi Wind PI: \n\r"
+" - Data invio " + now + "\n\r"
+" - Versione "  + v + "\n\r"
+" - Sorgente email \n\r"
+" \t IP Locale: " + IP + " IP Publico: " + publicIP,"")) 
+
 if ( publicIP != None and cfg.use_DNSExit) :
 	DNSExit(cfg.DNSExit_uname,cfg.DNSExit_pwd,cfg.DNSExit_hname)
 	
